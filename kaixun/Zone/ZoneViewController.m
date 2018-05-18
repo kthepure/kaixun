@@ -10,6 +10,7 @@
 #import "DDMenuController.h"
 #import "BaiduMapVC.h"
 #import "KXNavControlDelegate.h"
+#import "KXZoneWithThreeButCell.h"
 @interface ZoneViewController ()<UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) UIImageView *bgImg;
 @property (nonatomic, strong) KXNavControlDelegate *transitionDelegate;
@@ -87,9 +88,9 @@
     return 1;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    TQPHealthyServiceHelpWayCell *cell = [tableView dequeueReusableCellWithIdentifier:[TQPHealthyServiceHelpWayCell reuseIdentifier]];
+    KXZoneWithThreeButCell *cell = [tableView dequeueReusableCellWithIdentifier:[KXZoneWithThreeButCell reuseIdentifier]];
     if (!cell) {
-        cell = [[TQPHealthyServiceHelpWayCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[TQPHealthyServiceHelpWayCell reuseIdentifier]];
+        cell = [[KXZoneWithThreeButCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[KXZoneWithThreeButCell reuseIdentifier]];
         [cell setDelegate:self];
     }
     return cell;
