@@ -10,9 +10,10 @@
 #import "DDMenuController.h"
 #import "BaiduMapVC.h"
 #import "KXNavControlDelegate.h"
-@interface ZoneViewController ()
+@interface ZoneViewController ()<UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) UIImageView *bgImg;
 @property (nonatomic, strong) KXNavControlDelegate *transitionDelegate;
+@property (null_resettable, strong, nonatomic) UITableView *tableView;
 
 @end
 
@@ -27,7 +28,7 @@
     [self.navigationController.navigationBar setTranslucent:NO];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
     [self customNavigationBar];
-    [self configureLayoutContraints];
+//    [self configureLayoutContraints];
     self.transitionDelegate = [KXNavControlDelegate new];
 
     
@@ -75,9 +76,23 @@
     }];
 }
 
+#pragma mark - UITableView: DateSource, Delegate
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
 
-- (void)cancelSearch:(id)sender{
-    
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 1;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    TQPHealthyServiceHelpWayCell *cell = [tableView dequeueReusableCellWithIdentifier:[TQPHealthyServiceHelpWayCell reuseIdentifier]];
+    if (!cell) {
+        cell = [[TQPHealthyServiceHelpWayCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[TQPHealthyServiceHelpWayCell reuseIdentifier]];
+        [cell setDelegate:self];
+    }
+    return cell;
 }
 
 #pragma mark subview load
@@ -86,6 +101,23 @@
         _bgImg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg_zone"]];
     }
     return _bgImg;
+}
+
+#pragma mark - Lazy Load
+- (UITableView *)tableView
+{
+    if (!_tableView) {
+        _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+        [_tableView setSeparatorColor:[UIColor colorWithDecimalRed:224 green:227 blue:233 alpha:1]];
+        
+        [_tableView setEstimatedRowHeight:0];
+        [_tableView setEstimatedSectionHeaderHeight:0];
+        [_tableView setEstimatedSectionFooterHeight:0];
+        
+        [_tableView setDataSource:self];
+        [_tableView setDelegate:self];
+    }
+    return _tableView;
 }
 
 - (void)didReceiveMemoryWarning {

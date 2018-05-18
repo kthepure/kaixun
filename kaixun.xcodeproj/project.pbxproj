@@ -37,6 +37,7 @@
 		4B4762501EC29EA4004D484B /* PrefixHeader.pch in Sources */ = {isa = PBXBuildFile; fileRef = 4B7674551DD565D800CAB8E7 /* PrefixHeader.pch */; };
 		4B4762561EC2A01D004D484B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B4762551EC2A01D004D484B /* Main.storyboard */; };
 		4B4762571EC2A379004D484B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B7BE8981DDED31200344F89 /* Assets.xcassets */; };
+		4B5D7D5320AED5A50001F5C5 /* KXZoneWithThreeButCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B5D7D5220AED5A50001F5C5 /* KXZoneWithThreeButCell.m */; };
 		4B62D4BB206BC20500271CEE /* ZKScaleTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B62D4BA206BC20500271CEE /* ZKScaleTransition.m */; };
 		4B830C101F418FC500C398A6 /* MWCaptionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B830BBA1F418FC500C398A6 /* MWCaptionView.m */; };
 		4B830C111F418FC500C398A6 /* MWGridCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B830BBD1F418FC500C398A6 /* MWGridCell.m */; };
@@ -339,6 +340,8 @@
 		4B3EBC64206FD5FF00615051 /* ZKWindTransition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZKWindTransition.m; sourceTree = "<group>"; };
 		4B43A3511EC1A86D0013AEBE /* kaixun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kaixun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B4762551EC2A01D004D484B /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		4B5D7D5120AED5A50001F5C5 /* KXZoneWithThreeButCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KXZoneWithThreeButCell.h; sourceTree = "<group>"; };
+		4B5D7D5220AED5A50001F5C5 /* KXZoneWithThreeButCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KXZoneWithThreeButCell.m; sourceTree = "<group>"; };
 		4B62D4B9206BC20500271CEE /* ZKScaleTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZKScaleTransition.h; sourceTree = "<group>"; };
 		4B62D4BA206BC20500271CEE /* ZKScaleTransition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZKScaleTransition.m; sourceTree = "<group>"; };
 		4B727D451DD985D1003A578A /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
@@ -805,25 +808,10 @@
 		4B3BD32D1DDBE5AB0073A63B /* main */ = {
 			isa = PBXGroup;
 			children = (
+				4BA8EF4720AECF3E002692E6 /* Contact */,
+				4BA8EF4620AECF32002692E6 /* Message */,
+				4BD2028520AECC650043CD18 /* Zone */,
 				4B3EBC5F206FD0B400615051 /* TransitionDelegate */,
-				4B727D481DD9A9E3003A578A /* MessageViewController.h */,
-				4B727D491DD9A9E3003A578A /* MessageViewController.m */,
-				4B727D4B1DD9AA12003A578A /* ContactViewController.h */,
-				4B727D4C1DD9AA12003A578A /* ContactViewController.m */,
-				4B1467F11F170A9F0059AAC7 /* AddContactVC.h */,
-				4B1467F21F170A9F0059AAC7 /* AddContactVC.m */,
-				4B3C112D1F29BB7D00E62B44 /* NewFriendsVC.h */,
-				4B3C112E1F29BB7D00E62B44 /* NewFriendsVC.m */,
-				4B727D4E1DD9AA22003A578A /* ZoneViewController.h */,
-				4B727D4F1DD9AA22003A578A /* ZoneViewController.m */,
-				4B3C46921F0A1B4B003100E3 /* ChatWithUserVC.h */,
-				4B3C46931F0A1B4B003100E3 /* ChatWithUserVC.m */,
-				4BCD39912059FFFE00F4DA75 /* BaiduMapVC.h */,
-				4BCD39922059FFFE00F4DA75 /* BaiduMapVC.m */,
-				4B62D4B9206BC20500271CEE /* ZKScaleTransition.h */,
-				4B62D4BA206BC20500271CEE /* ZKScaleTransition.m */,
-				4B3EBC63206FD5FF00615051 /* ZKWindTransition.h */,
-				4B3EBC64206FD5FF00615051 /* ZKWindTransition.m */,
 			);
 			name = main;
 			sourceTree = "<group>";
@@ -831,6 +819,10 @@
 		4B3EBC5F206FD0B400615051 /* TransitionDelegate */ = {
 			isa = PBXGroup;
 			children = (
+				4B62D4B9206BC20500271CEE /* ZKScaleTransition.h */,
+				4B62D4BA206BC20500271CEE /* ZKScaleTransition.m */,
+				4B3EBC63206FD5FF00615051 /* ZKWindTransition.h */,
+				4B3EBC64206FD5FF00615051 /* ZKWindTransition.m */,
 				4B3EBC60206FD14700615051 /* KXNavControlDelegate.h */,
 				4B3EBC61206FD14700615051 /* KXNavControlDelegate.m */,
 			);
@@ -1708,6 +1700,30 @@
 			path = tabbar;
 			sourceTree = "<group>";
 		};
+		4BA8EF4620AECF32002692E6 /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				4B727D481DD9A9E3003A578A /* MessageViewController.h */,
+				4B727D491DD9A9E3003A578A /* MessageViewController.m */,
+			);
+			path = Message;
+			sourceTree = "<group>";
+		};
+		4BA8EF4720AECF3E002692E6 /* Contact */ = {
+			isa = PBXGroup;
+			children = (
+				4B3C112D1F29BB7D00E62B44 /* NewFriendsVC.h */,
+				4B3C112E1F29BB7D00E62B44 /* NewFriendsVC.m */,
+				4B3C46921F0A1B4B003100E3 /* ChatWithUserVC.h */,
+				4B3C46931F0A1B4B003100E3 /* ChatWithUserVC.m */,
+				4B1467F11F170A9F0059AAC7 /* AddContactVC.h */,
+				4B1467F21F170A9F0059AAC7 /* AddContactVC.m */,
+				4B727D4B1DD9AA12003A578A /* ContactViewController.h */,
+				4B727D4C1DD9AA12003A578A /* ContactViewController.m */,
+			);
+			path = Contact;
+			sourceTree = "<group>";
+		};
 		4BBEDA251DE580EA00D3FBD4 /* leftViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1717,6 +1733,19 @@
 				4BBEDA271DE5812000D3FBD4 /* QRCodeViewController.m */,
 			);
 			name = leftViewController;
+			sourceTree = "<group>";
+		};
+		4BD2028520AECC650043CD18 /* Zone */ = {
+			isa = PBXGroup;
+			children = (
+				4B727D4E1DD9AA22003A578A /* ZoneViewController.h */,
+				4B727D4F1DD9AA22003A578A /* ZoneViewController.m */,
+				4B5D7D5120AED5A50001F5C5 /* KXZoneWithThreeButCell.h */,
+				4B5D7D5220AED5A50001F5C5 /* KXZoneWithThreeButCell.m */,
+				4BCD39912059FFFE00F4DA75 /* BaiduMapVC.h */,
+				4BCD39922059FFFE00F4DA75 /* BaiduMapVC.m */,
+			);
+			path = Zone;
 			sourceTree = "<group>";
 		};
 		4BDC88371F4D22880081ABC4 /* Category */ = {
@@ -2118,6 +2147,7 @@
 				4B830CA51F44299200C398A6 /* UIResponder+Router.m in Sources */,
 				4B830C2C1F418FC500C398A6 /* PSTCollectionViewController.m in Sources */,
 				4B47622A1EC29E7E004D484B /* MASLayoutConstraint.m in Sources */,
+				4B5D7D5320AED5A50001F5C5 /* KXZoneWithThreeButCell.m in Sources */,
 				4B47622E1EC29E7E004D484B /* MASViewAttribute.m in Sources */,
 				4B830C131F418FC500C398A6 /* MWPhoto.m in Sources */,
 				4B830C1E1F418FC500C398A6 /* EMSDWebImageManager.m in Sources */,
