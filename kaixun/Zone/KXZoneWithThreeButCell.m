@@ -11,10 +11,9 @@
 
 @interface KXZoneWithThreeButCell ()
 
-@property (strong, nonatomic) UIImageView *bannerIV;
-@property (strong, nonatomic) UIButton *helperBtn;
-@property (strong, nonatomic) UIButton *callPhoneBtn;
-@property (strong, nonatomic) UIButton *requireServiceBtn;
+@property (strong, nonatomic) UIButton *nearbyBtn;
+@property (strong, nonatomic) UIButton *intersetTribesBtn;
+@property (strong, nonatomic) UIButton *buddyDynamicsBtn;
 @property (strong, nonatomic) UIView *verticalLine1View;
 @property (strong, nonatomic) UIView *verticalLine2View;
 
@@ -57,51 +56,46 @@
     [self setSelectionStyle:UITableViewCellSelectionStyleNone];
     [self setBackgroundColor:[UIColor whiteColor]];
     
-    [self.contentView addSubview:self.bannerIV];
-    [self.contentView addSubview:self.requireServiceBtn];
-    [self.contentView addSubview:self.helperBtn];
-    [self.contentView addSubview:self.callPhoneBtn];
+    [self.contentView addSubview:self.buddyDynamicsBtn];
+    [self.contentView addSubview:self.nearbyBtn];
+    [self.contentView addSubview:self.intersetTribesBtn];
     [self.contentView addSubview:self.verticalLine1View];
     [self.contentView addSubview:self.verticalLine2View];
     
-    [self.bannerIV mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.left.and.right.equalTo(self.contentView);
-        make.height.mas_equalTo(CGRectGetHeight(self.bannerIV.frame));
-    }];
-    
-    [self.requireServiceBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.bannerIV.mas_bottom);
+    [self.buddyDynamicsBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.contentView);
         make.bottom.equalTo(self.contentView);
-        make.height.equalTo(self.requireServiceBtn.mas_width);
+        make.height.equalTo(self.buddyDynamicsBtn.mas_width);
         make.left.equalTo(self.contentView);
         make.right.equalTo(self.contentView).dividedBy(3);
     }];
     
-    [self.helperBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.bannerIV.mas_bottom);
-        make.height.equalTo(self.requireServiceBtn);
-        make.left.equalTo(self.requireServiceBtn.mas_right);
+    [self.nearbyBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.contentView);
+        make.height.equalTo(self.buddyDynamicsBtn);
+        make.left.equalTo(self.buddyDynamicsBtn.mas_right);
         make.right.equalTo(self.contentView).multipliedBy(2.f/3.f);
     }];
     
-    [self.callPhoneBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.helperBtn);
-        make.height.equalTo(self.helperBtn);
-        make.left.equalTo(self.helperBtn.mas_right);
+    [self.intersetTribesBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.nearbyBtn);
+        make.height.equalTo(self.nearbyBtn);
+        make.left.equalTo(self.nearbyBtn.mas_right);
         make.right.equalTo(self.contentView);
     }];
     
-    [self.verticalLine1View mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.bottom.equalTo(self.requireServiceBtn);
-        make.width.mas_equalTo(kLineWidth);
-        make.centerX.equalTo(self.requireServiceBtn.mas_right);
-    }];
-    
-    [self.verticalLine2View mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.bottom.equalTo(self.requireServiceBtn);
-        make.width.mas_equalTo(kLineWidth);
-        make.centerX.equalTo(self.helperBtn.mas_right);
-    }];
+    //去除两个竖直的间隔线
+//    [self.verticalLine1View mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.bottom.equalTo(self.buddyDynamicsBtn);
+//        make.width.mas_equalTo(kLineWidth);
+//        make.centerX.equalTo(self.buddyDynamicsBtn.mas_right);
+//    }];
+//
+//    [self.verticalLine2View mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.bottom.equalTo(self.buddyDynamicsBtn);
+//        make.width.mas_equalTo(kLineWidth);
+//        make.centerX.equalTo(self.nearbyBtn.mas_right);
+//    }];
 }
 
 - (void)adjustButton:(UIButton *)btn
@@ -130,42 +124,27 @@
 }
 
 #pragma mark - Event Response
-- (void)askForHelperEvent:(UIButton *)sender
+- (void)buddyDynamicsEvent:(UIButton *)sender
 {
-    if ([self.delegate respondsToSelector:@selector(healthyServiceHelpWayCellWillAskingForHelper:)]) {
-        [self.delegate healthyServiceHelpWayCellWillAskingForHelper:self];
+    if ([self.delegate respondsToSelector:@selector(zoneBuddyDynamicsDelegate:)]) {
+        [self.delegate zoneBuddyDynamicsDelegate:@"好友动态"];
     }
 }
 
-- (void)callPhoneEvent:(UIButton *)sender
+- (void)nearbyEvent:(UIButton *)sender
 {
-    if ([self.delegate respondsToSelector:@selector(healthyServiceHelpWayCellWillCallingPhone:)]) {
-        [self.delegate healthyServiceHelpWayCellWillCallingPhone:self];
+    if ([self.delegate respondsToSelector:@selector(zoneNearbyDelegate)]) {
+        [self.delegate zoneNearbyDelegate];
     }
 }
-
-- (void)requireServiceEvent:(UIButton *)sender
+- (void)intersetTribesEvent:(UIButton *)sender
 {
-    if ([self.delegate respondsToSelector:@selector(healthyServiceHelpWayCellWillRequireService:)]) {
-        [self.delegate healthyServiceHelpWayCellWillRequireService:self];
+    if ([self.delegate respondsToSelector:@selector(zoneIntersetTribesDelegate)]) {
+        [self.delegate zoneIntersetTribesDelegate];
     }
 }
 
 #pragma mark - Lazy Load
-
-- (UIImageView *)bannerIV
-{
-    if (!_bannerIV) {
-        _bannerIV = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"s201_banner"]];
-        [_bannerIV setContentMode:UIViewContentModeScaleAspectFit];
-        CGSize imageSize = _bannerIV.image.size;
-        CGSize viewSize = [UIScreen mainScreen].bounds.size;
-        
-        CGFloat actualHeight = viewSize.width / imageSize.width * imageSize.height;
-        [_bannerIV setBounds:CGRectMake(0, 0, viewSize.width, actualHeight)];
-    }
-    return _bannerIV;
-}
 
 - (UIView *)verticalLine1View
 {
@@ -185,106 +164,88 @@
     return _verticalLine2View;
 }
 
-- (UIButton *)helperBtn
+- (UIButton *)nearbyBtn
 {
-    if (!_helperBtn) {
-        _helperBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_helperBtn.titleLabel setTextAlignment:NSTextAlignmentCenter];
-        [_helperBtn.titleLabel setNumberOfLines:0];
+    if (!_nearbyBtn) {
+        _nearbyBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_nearbyBtn.titleLabel setTextAlignment:NSTextAlignmentCenter];
+        [_nearbyBtn.titleLabel setNumberOfLines:0];
         
-        [_helperBtn setImage:[UIImage imageNamed:@"s201_icon_help"] forState:UIControlStateNormal];
+        [_nearbyBtn setImage:[UIImage imageNamed:@"s201_icon_help"] forState:UIControlStateNormal];
         
-        NSString *title = @"向助手发求助";
-        NSString *subtitle = @"柳叶助手帮您解决";
-        NSString *combineTitle = [NSString stringWithFormat:@"%@\n%@", title, subtitle];
-        NSRange titleRange = [combineTitle rangeOfString:title];
-        NSRange subtitleRange = [combineTitle rangeOfString:subtitle];
-        
-        NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:combineTitle];
+        NSString *title = @"附近";
+        NSRange titleRange = [title rangeOfString:title];
+        NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:title];
         [attr addAttributes:@{
                               NSForegroundColorAttributeName : [UIColor colorWithDecimalRed:64 green:74 blue:84 alpha:1],
                               NSFontAttributeName : [UIFont boldSystemFontOfSize:15]} range:titleRange];
-        [attr addAttributes:@{
-                              NSForegroundColorAttributeName : [UIColor colorWithDecimalRed:170 green:178 blue:189 alpha:1], NSFontAttributeName : [UIFont systemFontOfSize:12]} range:subtitleRange];
         NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
         [paragraphStyle setAlignment:NSTextAlignmentCenter];
         [paragraphStyle setLineSpacing:5.f];
-        [attr addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [combineTitle length])];
-        [_helperBtn setAttributedTitle:attr forState:UIControlStateNormal];
+        [attr addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [title length])];
+        [_nearbyBtn setAttributedTitle:attr forState:UIControlStateNormal];
         
-        [_helperBtn addTarget:self action:@selector(askForHelperEvent:) forControlEvents:UIControlEventTouchUpInside];
+        [_nearbyBtn addTarget:self action:@selector(nearbyEvent:) forControlEvents:UIControlEventTouchUpInside];
         
-        [self adjustButton:self.helperBtn];
+        [self adjustButton:self.nearbyBtn];
     }
-    return _helperBtn;
+    return _nearbyBtn;
 }
 
-- (UIButton *)callPhoneBtn
+- (UIButton *)intersetTribesBtn
 {
-    if (!_callPhoneBtn) {
-        _callPhoneBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_callPhoneBtn.titleLabel setTextAlignment:NSTextAlignmentCenter];
-        [_callPhoneBtn.titleLabel setNumberOfLines:0];
+    if (!_intersetTribesBtn) {
+        _intersetTribesBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_intersetTribesBtn.titleLabel setTextAlignment:NSTextAlignmentCenter];
+        [_intersetTribesBtn.titleLabel setNumberOfLines:0];
         
-        [_callPhoneBtn setImage:[UIImage imageNamed:@"s201_icon_400"] forState:UIControlStateNormal];
+        [_intersetTribesBtn setImage:[UIImage imageNamed:@"s201_icon_400"] forState:UIControlStateNormal];
         
-        NSString *title = @"400服务热线";
-        NSString *subtitle = @"专业个性化服务";
-        NSString *combineTitle = [NSString stringWithFormat:@"%@\n%@", title, subtitle];
-        NSRange titleRange = [combineTitle rangeOfString:title];
-        NSRange subtitleRange = [combineTitle rangeOfString:subtitle];
-        
-        NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:combineTitle];
+        NSString *title = @"兴趣部落";
+        NSRange titleRange = [title rangeOfString:title];
+        NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:title];
         [attr addAttributes:@{
                               NSForegroundColorAttributeName : [UIColor colorWithDecimalRed:67 green:74 blue:84 alpha:1],
                               NSFontAttributeName : [UIFont boldSystemFontOfSize:15]} range:titleRange];
-        [attr addAttributes:@{
-                              NSForegroundColorAttributeName : [UIColor colorWithDecimalRed:170 green:178 blue:189 alpha:1], NSFontAttributeName : [UIFont systemFontOfSize:12]} range:subtitleRange];
         NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
         [paragraphStyle setAlignment:NSTextAlignmentCenter];
         [paragraphStyle setLineSpacing:5.f];
-        [attr addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [combineTitle length])];
-        [_callPhoneBtn setAttributedTitle:attr forState:UIControlStateNormal];
+        [attr addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [title length])];
+        [_intersetTribesBtn setAttributedTitle:attr forState:UIControlStateNormal];
         
-        [_callPhoneBtn addTarget:self action:@selector(callPhoneEvent:) forControlEvents:UIControlEventTouchUpInside];
+        [_intersetTribesBtn addTarget:self action:@selector(intersetTribesEvent:) forControlEvents:UIControlEventTouchUpInside];
         
-        [self adjustButton:self.callPhoneBtn];
+        [self adjustButton:self.intersetTribesBtn];
     }
-    return _callPhoneBtn;
+    return _intersetTribesBtn;
 }
 
-- (UIButton *)requireServiceBtn
+- (UIButton *)buddyDynamicsBtn
 {
-    if (!_requireServiceBtn) {
-        _requireServiceBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_requireServiceBtn.titleLabel setTextAlignment:NSTextAlignmentCenter];
-        [_requireServiceBtn.titleLabel setNumberOfLines:0];
+    if (!_buddyDynamicsBtn) {
+        _buddyDynamicsBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_buddyDynamicsBtn.titleLabel setTextAlignment:NSTextAlignmentCenter];
+        [_buddyDynamicsBtn.titleLabel setNumberOfLines:0];
         
-        [_requireServiceBtn setImage:[UIImage imageNamed:@"s201_icon_service"] forState:UIControlStateNormal];
+        [_buddyDynamicsBtn setImage:[UIImage imageNamed:@"s201_icon_service"] forState:UIControlStateNormal];
         
-        NSString *title = @"寻找贴心服务";
-        NSString *subtitle = @"服务精心呈现";
-        NSString *combineTitle = [NSString stringWithFormat:@"%@\n%@", title, subtitle];
-        NSRange titleRange = [combineTitle rangeOfString:title];
-        NSRange subtitleRange = [combineTitle rangeOfString:subtitle];
-        
-        NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:combineTitle];
+        NSString *title = @"好友动态";
+        NSRange titleRange = [title rangeOfString:title];
+        NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:title];
         [attr addAttributes:@{
                               NSForegroundColorAttributeName : [UIColor colorWithDecimalRed:67 green:74 blue:84 alpha:1],
                               NSFontAttributeName : [UIFont boldSystemFontOfSize:15]} range:titleRange];
-        [attr addAttributes:@{
-                              NSForegroundColorAttributeName : [UIColor colorWithDecimalRed:170 green:178 blue:189 alpha:1], NSFontAttributeName : [UIFont systemFontOfSize:12]} range:subtitleRange];
         NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
         [paragraphStyle setAlignment:NSTextAlignmentCenter];
         [paragraphStyle setLineSpacing:5.f];
-        [attr addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [combineTitle length])];
-        [_requireServiceBtn setAttributedTitle:attr forState:UIControlStateNormal];
+        [attr addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [title length])];
+        [_buddyDynamicsBtn setAttributedTitle:attr forState:UIControlStateNormal];
         
-        [_requireServiceBtn addTarget:self action:@selector(requireServiceEvent:) forControlEvents:UIControlEventTouchUpInside];
+        [_buddyDynamicsBtn addTarget:self action:@selector(buddyDynamicsEvent:) forControlEvents:UIControlEventTouchUpInside];
         
-        [self adjustButton:self.requireServiceBtn];
+        [self adjustButton:self.buddyDynamicsBtn];
     }
-    return _requireServiceBtn;
+    return _buddyDynamicsBtn;
 }
 
 

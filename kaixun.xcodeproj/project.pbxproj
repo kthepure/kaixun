@@ -320,6 +320,7 @@
 		4B830E811F442F9400C398A6 /* tabbarBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B830DC81F442F9400C398A6 /* tabbarBackground@2x.png */; };
 		4B830E821F442F9400C398A6 /* tabbarSelectBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B830DC91F442F9400C398A6 /* tabbarSelectBg.png */; };
 		4B830E831F442F9400C398A6 /* tabbarSelectBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B830DCA1F442F9400C398A6 /* tabbarSelectBg@2x.png */; };
+		4B8BF0DF20B3F771008CCCBD /* KXBuddyDynamicVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8BF0DE20B3F771008CCCBD /* KXBuddyDynamicVC.m */; };
 		4BA0B2A91F74AFEC00A0AC5F /* AppDelegate+Appearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA0B2A81F74AFEC00A0AC5F /* AppDelegate+Appearance.m */; };
 		4BCD39932059FFFE00F4DA75 /* BaiduMapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BCD39922059FFFE00F4DA75 /* BaiduMapVC.m */; };
 		C21CE26A70C6CAEF9257EF6E /* libPods-kaixun.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3A66B64DD1ED19A26DDA7E9 /* libPods-kaixun.a */; };
@@ -780,6 +781,8 @@
 		4B830DC81F442F9400C398A6 /* tabbarBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbarBackground@2x.png"; sourceTree = "<group>"; };
 		4B830DC91F442F9400C398A6 /* tabbarSelectBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbarSelectBg.png; sourceTree = "<group>"; };
 		4B830DCA1F442F9400C398A6 /* tabbarSelectBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbarSelectBg@2x.png"; sourceTree = "<group>"; };
+		4B8BF0DD20B3F771008CCCBD /* KXBuddyDynamicVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KXBuddyDynamicVC.h; sourceTree = "<group>"; };
+		4B8BF0DE20B3F771008CCCBD /* KXBuddyDynamicVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KXBuddyDynamicVC.m; sourceTree = "<group>"; };
 		4BA0B2A71F74AFEC00A0AC5F /* AppDelegate+Appearance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+Appearance.h"; sourceTree = "<group>"; };
 		4BA0B2A81F74AFEC00A0AC5F /* AppDelegate+Appearance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+Appearance.m"; sourceTree = "<group>"; };
 		4BBEDA261DE5812000D3FBD4 /* QRCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeViewController.h; sourceTree = "<group>"; };
@@ -1712,14 +1715,14 @@
 		4BA8EF4720AECF3E002692E6 /* Contact */ = {
 			isa = PBXGroup;
 			children = (
+				4B727D4B1DD9AA12003A578A /* ContactViewController.h */,
+				4B727D4C1DD9AA12003A578A /* ContactViewController.m */,
 				4B3C112D1F29BB7D00E62B44 /* NewFriendsVC.h */,
 				4B3C112E1F29BB7D00E62B44 /* NewFriendsVC.m */,
 				4B3C46921F0A1B4B003100E3 /* ChatWithUserVC.h */,
 				4B3C46931F0A1B4B003100E3 /* ChatWithUserVC.m */,
 				4B1467F11F170A9F0059AAC7 /* AddContactVC.h */,
 				4B1467F21F170A9F0059AAC7 /* AddContactVC.m */,
-				4B727D4B1DD9AA12003A578A /* ContactViewController.h */,
-				4B727D4C1DD9AA12003A578A /* ContactViewController.m */,
 			);
 			path = Contact;
 			sourceTree = "<group>";
@@ -1742,6 +1745,8 @@
 				4B727D4F1DD9AA22003A578A /* ZoneViewController.m */,
 				4B5D7D5120AED5A50001F5C5 /* KXZoneWithThreeButCell.h */,
 				4B5D7D5220AED5A50001F5C5 /* KXZoneWithThreeButCell.m */,
+				4B8BF0DD20B3F771008CCCBD /* KXBuddyDynamicVC.h */,
+				4B8BF0DE20B3F771008CCCBD /* KXBuddyDynamicVC.m */,
 				4BCD39912059FFFE00F4DA75 /* BaiduMapVC.h */,
 				4BCD39922059FFFE00F4DA75 /* BaiduMapVC.m */,
 			);
@@ -2086,6 +2091,7 @@
 				4B830C141F418FC500C398A6 /* MWPhotoBrowser.m in Sources */,
 				4B830CC31F442A2C00C398A6 /* EMCDDeviceManagerBase.m in Sources */,
 				4B830C2D1F418FC500C398A6 /* PSTCollectionViewData.m in Sources */,
+				4B8BF0DF20B3F771008CCCBD /* KXBuddyDynamicVC.m in Sources */,
 				4B830C111F418FC500C398A6 /* MWGridCell.m in Sources */,
 				4B830C341F418FC500C398A6 /* PSTGridLayoutRow.m in Sources */,
 				4B4762501EC29EA4004D484B /* PrefixHeader.pch in Sources */,

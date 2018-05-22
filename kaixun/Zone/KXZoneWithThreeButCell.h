@@ -8,21 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol TQPHealthyServiceHelpWayCellDelegate <NSObject>
+@protocol KXZoneWithThreeButCellDelegate <NSObject>
 
 @optional
 /// 好友动态
-//- (void)healthyServiceHelpWayCellWillAskingForHelper:(TQPHealthyServiceHelpWayCell *)healthyServiceHelpWay;
-/// 拨打400服务热线
-//- (void)healthyServiceHelpWayCellWillCallingPhone:(TQPHealthyServiceHelpWayCell *)healthyServiceHelpWay;
-/// 寻找贴心服务
-//- (void)healthyServiceHelpWayCellWillRequireService:(TQPHealthyServiceHelpWayCell *)healthyServiceHelpWay;
+- (void)zoneBuddyDynamicsDelegate:(NSString *)title;
+/// 附近
+- (void)zoneNearbyDelegate;
+/// 兴趣部落
+- (void)zoneIntersetTribesDelegate;
 @end
 ///空间界面上部三个按钮
 @interface KXZoneWithThreeButCell : UITableViewCell
 
 + (NSString *)reuseIdentifier;
 
-@property (weak, nonatomic) id<TQPHealthyServiceHelpWayCellDelegate> delegate;
+@property (weak, nonatomic) id<KXZoneWithThreeButCellDelegate> delegate;
 
 @end
