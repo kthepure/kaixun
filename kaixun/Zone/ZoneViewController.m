@@ -18,6 +18,8 @@
 @property (nonatomic, strong) UIImageView *bgImg;
 @property (nonatomic, strong) KXNavControlDelegate *transitionDelegate;
 @property (null_resettable, strong, nonatomic) UITableView *tableView;
+@property (nonatomic, strong) NSArray *iconArr;
+@property (nonatomic, strong) NSArray *cellNameArr;
 
 @end
 
@@ -31,6 +33,10 @@
     //取消导航栏背景色透明效果(默认透明)
     [self.navigationController.navigationBar setTranslucent:NO];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    
+    self.iconArr = @[@"found_icons_music",@"found_icons_gamecenter",@"found_icons_readcenter",@"found_icons_group_homework"];
+    self.cellNameArr = @[@"音乐",@"游戏",@"阅读",@"腾讯新闻"];
+    
     [self customNavigationBar];
     [self configureLayoutContraints];
     self.transitionDelegate = [KXNavControlDelegate new];
@@ -131,9 +137,10 @@
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-//        cell.textLabel.text = [_arrSystem objectAtIndex:indexPath.row];
-        cell.textLabel.text = @"鹅漫U品";
-        UIImage *image = [UIImage imageNamed:@"create_group_cell_icon"];
+        
+        cell.textLabel.text = self.cellNameArr[(indexPath.section-1)*2+indexPath.row];
+        NSString *iconStr = [NSString stringWithFormat:@"%@",self.iconArr[(indexPath.section-1)*2+indexPath.row]];
+        UIImage *image = [UIImage imageNamed:iconStr];
         CGSize size = CGSizeMake(30, 30);
         UIGraphicsBeginImageContextWithOptions(size, NO, 0);
         CGRect imageRect = CGRectMake(0, 0, size.width, size.height);

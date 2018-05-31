@@ -171,7 +171,7 @@
         [_nearbyBtn.titleLabel setTextAlignment:NSTextAlignmentCenter];
         [_nearbyBtn.titleLabel setNumberOfLines:0];
         
-        [_nearbyBtn setImage:[UIImage imageNamed:@"s201_icon_help"] forState:UIControlStateNormal];
+        [_nearbyBtn setImage:[UIImage imageNamed:@"found_icons_location"] forState:UIControlStateNormal];
         
         NSString *title = @"附近";
         NSRange titleRange = [title rangeOfString:title];
@@ -199,7 +199,7 @@
         [_intersetTribesBtn.titleLabel setTextAlignment:NSTextAlignmentCenter];
         [_intersetTribesBtn.titleLabel setNumberOfLines:0];
         
-        [_intersetTribesBtn setImage:[UIImage imageNamed:@"s201_icon_400"] forState:UIControlStateNormal];
+        [_intersetTribesBtn setImage:[UIImage imageNamed:@"found_icons_group_buluo"] forState:UIControlStateNormal];
         
         NSString *title = @"兴趣部落";
         NSRange titleRange = [title rangeOfString:title];
@@ -227,7 +227,7 @@
         [_buddyDynamicsBtn.titleLabel setTextAlignment:NSTextAlignmentCenter];
         [_buddyDynamicsBtn.titleLabel setNumberOfLines:0];
         
-        [_buddyDynamicsBtn setImage:[UIImage imageNamed:@"s201_icon_service"] forState:UIControlStateNormal];
+        [_buddyDynamicsBtn setImage:[UIImage imageNamed:@"found_icons_qzone"] forState:UIControlStateNormal];
         
         NSString *title = @"好友动态";
         NSRange titleRange = [title rangeOfString:title];
