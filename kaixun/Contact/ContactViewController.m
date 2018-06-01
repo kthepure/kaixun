@@ -11,6 +11,7 @@
 #import "AddContactVC.h"
 #import "NewFriendsVC.h"
 #import "ChatViewController.h"
+#import "UIImage+Extend.h"
 @interface ContactViewController ()<UITableViewDelegate, UITableViewDataSource>
 {
     NSArray *_arrSystem;
@@ -172,13 +173,21 @@
     switch (indexPath.section) {
         case 0:
         {
+            NSString *imgStr = @"";
             cell.textLabel.text = [_arrSystem objectAtIndex:indexPath.row];
-            UIImage *image = [UIImage imageNamed:@"create_group_cell_icon"];
+            if (indexPath.row == 0) {
+                imgStr = @"icon_application_notification";
+            }else if (indexPath.row == 1){
+                imgStr = @"icon_group_chat";
+            }else{
+                imgStr = @"icon_chat_room";
+            }
+            UIImage *image = [UIImage imageNamed:imgStr];
+            
             CGSize size = CGSizeMake(30, 30);
             //获得用来处理图片的图形上下文。利用该上下文，你就可以在其上进行绘图，并生成图片 ,三个参数含义是设置大小、透明度 （NO为不透明）、缩放（0代表不缩放）
             UIGraphicsBeginImageContextWithOptions(size, NO, 0);
-            CGRect imageRect = CGRectMake(0, 0, size.width, size.height);
-            [image drawInRect:imageRect];
+            [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
             cell.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
             UIGraphicsEndImageContext();
             
@@ -201,13 +210,8 @@
         {
             EMBuddy *eMBuddy = [_arrFriends objectAtIndex:indexPath.row];
             cell.textLabel.text = eMBuddy.username;
-            UIImage *image = [UIImage imageNamed:@"conversation_address-book_avatar"];
-            CGSize size = CGSizeMake(34, 34);
-            UIGraphicsBeginImageContextWithOptions(size, NO, 0);
-            CGRect imageRect = CGRectMake(0, 0, size.width, size.height);
-            [image drawInRect:imageRect];
-            cell.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
-            UIGraphicsEndImageContext();
+            UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"headimg_dl%ld",indexPath.row]];
+            cell.imageView.image = [image imageWithResetSize:CGSizeMake(34, 34)];
             break;
         }
             
