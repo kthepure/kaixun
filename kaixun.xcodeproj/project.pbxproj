@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4B1467F31F170A9F0059AAC7 /* AddContactVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1467F21F170A9F0059AAC7 /* AddContactVC.m */; };
+		4B18E1FE23016B770097368C /* AppDelegate+Appearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B18E1FC23016B760097368C /* AppDelegate+Appearance.m */; };
 		4B3C112F1F29BB7D00E62B44 /* NewFriendsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B3C112E1F29BB7D00E62B44 /* NewFriendsVC.m */; };
 		4B3C46941F0A1B4B003100E3 /* ChatWithUserVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B3C46931F0A1B4B003100E3 /* ChatWithUserVC.m */; };
 		4B3C46971F0B37A1003100E3 /* MBProgressHUD+Extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B3C46961F0B37A1003100E3 /* MBProgressHUD+Extend.m */; };
@@ -322,7 +323,6 @@
 		4B830E821F442F9400C398A6 /* tabbarSelectBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B830DC91F442F9400C398A6 /* tabbarSelectBg.png */; };
 		4B830E831F442F9400C398A6 /* tabbarSelectBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B830DCA1F442F9400C398A6 /* tabbarSelectBg@2x.png */; };
 		4B8BF0DF20B3F771008CCCBD /* KXBuddyDynamicVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8BF0DE20B3F771008CCCBD /* KXBuddyDynamicVC.m */; };
-		4BA0B2A91F74AFEC00A0AC5F /* AppDelegate+Appearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA0B2A81F74AFEC00A0AC5F /* AppDelegate+Appearance.m */; };
 		4BCD39932059FFFE00F4DA75 /* BaiduMapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BCD39922059FFFE00F4DA75 /* BaiduMapVC.m */; };
 		C21CE26A70C6CAEF9257EF6E /* libPods-kaixun.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3A66B64DD1ED19A26DDA7E9 /* libPods-kaixun.a */; };
 /* End PBXBuildFile section */
@@ -330,6 +330,8 @@
 /* Begin PBXFileReference section */
 		4B1467F11F170A9F0059AAC7 /* AddContactVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddContactVC.h; sourceTree = "<group>"; };
 		4B1467F21F170A9F0059AAC7 /* AddContactVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddContactVC.m; sourceTree = "<group>"; };
+		4B18E1FC23016B760097368C /* AppDelegate+Appearance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+Appearance.m"; sourceTree = "<group>"; };
+		4B18E1FD23016B770097368C /* AppDelegate+Appearance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+Appearance.h"; sourceTree = "<group>"; };
 		4B3C112D1F29BB7D00E62B44 /* NewFriendsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewFriendsVC.h; sourceTree = "<group>"; };
 		4B3C112E1F29BB7D00E62B44 /* NewFriendsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewFriendsVC.m; sourceTree = "<group>"; };
 		4B3C46921F0A1B4B003100E3 /* ChatWithUserVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatWithUserVC.h; sourceTree = "<group>"; };
@@ -391,8 +393,8 @@
 		4B76746D1DD5672700CAB8E7 /* View+MASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASShorthandAdditions.h"; sourceTree = "<group>"; };
 		4B76746E1DD5672700CAB8E7 /* ViewController+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+MASAdditions.h"; sourceTree = "<group>"; };
 		4B76746F1DD5672700CAB8E7 /* ViewController+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ViewController+MASAdditions.m"; sourceTree = "<group>"; };
-		4B76747A1DD58CE700CAB8E7 /* UIColor+Extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+Extend.h"; path = "kaixun/UIColor+Extend.h"; sourceTree = "<group>"; };
-		4B76747B1DD58CE700CAB8E7 /* UIColor+Extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+Extend.m"; path = "kaixun/UIColor+Extend.m"; sourceTree = "<group>"; };
+		4B76747A1DD58CE700CAB8E7 /* UIColor+Extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Extend.h"; sourceTree = "<group>"; };
+		4B76747B1DD58CE700CAB8E7 /* UIColor+Extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Extend.m"; sourceTree = "<group>"; };
 		4B7BE8981DDED31200344F89 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4B7E449C1DDD3EA800057BB6 /* DDMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMenuController.h; sourceTree = "<group>"; };
 		4B7E449D1DDD3EA800057BB6 /* DDMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMenuController.m; sourceTree = "<group>"; };
@@ -786,8 +788,6 @@
 		4B830DCA1F442F9400C398A6 /* tabbarSelectBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbarSelectBg@2x.png"; sourceTree = "<group>"; };
 		4B8BF0DD20B3F771008CCCBD /* KXBuddyDynamicVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KXBuddyDynamicVC.h; sourceTree = "<group>"; };
 		4B8BF0DE20B3F771008CCCBD /* KXBuddyDynamicVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KXBuddyDynamicVC.m; sourceTree = "<group>"; };
-		4BA0B2A71F74AFEC00A0AC5F /* AppDelegate+Appearance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+Appearance.h"; sourceTree = "<group>"; };
-		4BA0B2A81F74AFEC00A0AC5F /* AppDelegate+Appearance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+Appearance.m"; sourceTree = "<group>"; };
 		4BBEDA261DE5812000D3FBD4 /* QRCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeViewController.h; sourceTree = "<group>"; };
 		4BBEDA271DE5812000D3FBD4 /* QRCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeViewController.m; sourceTree = "<group>"; };
 		4BCD39912059FFFE00F4DA75 /* BaiduMapVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaiduMapVC.h; sourceTree = "<group>"; };
@@ -924,7 +924,6 @@
 			children = (
 				4B7673BF1DD54FD200CAB8E7 /* AppDelegate.h */,
 				4B7673C01DD54FD200CAB8E7 /* AppDelegate.m */,
-				4BDC88371F4D22880081ABC4 /* Category */,
 				4B7E449B1DDD3E9000057BB6 /* DDMenu */,
 			);
 			name = Production;
@@ -1210,6 +1209,14 @@
 		4B830C921F44299200C398A6 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				4B18E1FD23016B770097368C /* AppDelegate+Appearance.h */,
+				4B18E1FC23016B760097368C /* AppDelegate+Appearance.m */,
+				4B76747A1DD58CE700CAB8E7 /* UIColor+Extend.h */,
+				4B76747B1DD58CE700CAB8E7 /* UIColor+Extend.m */,
+				4B3C46951F0B37A1003100E3 /* MBProgressHUD+Extend.h */,
+				4B3C46961F0B37A1003100E3 /* MBProgressHUD+Extend.m */,
+				4B405D5320B7FEC6007D5D17 /* UIImage+Extend.h */,
+				4B405D5420B7FEC7007D5D17 /* UIImage+Extend.m */,
 				4B830C931F44299200C398A6 /* NSDate+Category.h */,
 				4B830C941F44299200C398A6 /* NSDate+Category.m */,
 				4B830C951F44299200C398A6 /* NSDateFormatter+Category.h */,
@@ -1756,21 +1763,6 @@
 			path = Zone;
 			sourceTree = "<group>";
 		};
-		4BDC88371F4D22880081ABC4 /* Category */ = {
-			isa = PBXGroup;
-			children = (
-				4BA0B2A71F74AFEC00A0AC5F /* AppDelegate+Appearance.h */,
-				4BA0B2A81F74AFEC00A0AC5F /* AppDelegate+Appearance.m */,
-				4B76747A1DD58CE700CAB8E7 /* UIColor+Extend.h */,
-				4B76747B1DD58CE700CAB8E7 /* UIColor+Extend.m */,
-				4B3C46951F0B37A1003100E3 /* MBProgressHUD+Extend.h */,
-				4B3C46961F0B37A1003100E3 /* MBProgressHUD+Extend.m */,
-				4B405D5320B7FEC6007D5D17 /* UIImage+Extend.h */,
-				4B405D5420B7FEC7007D5D17 /* UIImage+Extend.m */,
-			);
-			name = Category;
-			sourceTree = "<group>";
-		};
 		9F077CF4E3601B88045C8778 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -2090,6 +2082,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B18E1FE23016B770097368C /* AppDelegate+Appearance.m in Sources */,
 				4B47624F1EC29EA4004D484B /* main.m in Sources */,
 				4B830C8B1F44251E00C398A6 /* MessageModel.m in Sources */,
 				4B830C351F418FC500C398A6 /* PSTGridLayoutSection.m in Sources */,
@@ -2113,7 +2106,6 @@
 				4B830C251F418FC500C398A6 /* UIImage+EMWebP.m in Sources */,
 				4B830C2F1F418FC500C398A6 /* PSTCollectionViewItemKey.m in Sources */,
 				4B830CC11F442A2C00C398A6 /* EMCDDeviceManager+ProximitySensor.m in Sources */,
-				4BA0B2A91F74AFEC00A0AC5F /* AppDelegate+Appearance.m in Sources */,
 				4B47624A1EC29E8B004D484B /* LeftViewController.m in Sources */,
 				4B830C1B1F418FC500C398A6 /* EMSDWebImageDecoder.m in Sources */,
 				4B830C2E1F418FC500C398A6 /* PSTCollectionViewFlowLayout.m in Sources */,
