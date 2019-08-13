@@ -15,9 +15,8 @@
 @property (nonatomic, strong) UIButton *telephoneBut;
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *chatList;
-//临时聊天输入框
-@property (nonatomic, strong) UITextField *messageTxt;
-@property (nonatomic, strong) UIButton *sendBut;
+
+@property (nonatomic, strong) UISegmentedControl *segmentedCtrl;
 @end
 
 @implementation MessageViewController
@@ -43,23 +42,19 @@
     [self.chatList addObjectsFromArray:cons1];
 }
 - (void)customNavigationBar{
-    UIView *navTitleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 120, 30)];
-    navTitleView.backgroundColor = [UIColor colorWithDecimalRed:0 green:175 blue:240 alpha:1];
-    navTitleView.layer.cornerRadius = 8;
-    navTitleView.layer.masksToBounds = YES;
-    navTitleView.layer.borderWidth = 1.5;
-    navTitleView.layer.borderColor = [[UIColor whiteColor] CGColor];
-    [navTitleView addSubview:self.messageBut];
-    [navTitleView addSubview:self.telephoneBut];
-    [self.messageBut mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.top.bottom.equalTo(navTitleView);
-        make.width.equalTo(navTitleView).dividedBy(2);
-    }];
-    [self.telephoneBut mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.top.bottom.equalTo(navTitleView);
-        make.width.equalTo(navTitleView).dividedBy(2);
-    }];
-    self.navigationItem.titleView = navTitleView;
+    //废弃手写的消息电话切换功能
+    //    UIView *navTitleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 120, 30)];
+    //    navTitleView.backgroundColor = [UIColor colorWithDecimalRed:0 green:175 blue:240 alpha:1];
+    //    navTitleView.layer.cornerRadius = 8;
+    //    navTitleView.layer.masksToBounds = YES;
+    //    navTitleView.layer.borderWidth = 1.5;
+    //    navTitleView.layer.borderColor = [[UIColor whiteColor] CGColor];
+    //    self.messageBut.frame = CGRectMake(0, 0, 60, 30);
+    //    self.telephoneBut.frame = CGRectMake(60, 0, 60, 30);
+    //    [navTitleView addSubview:self.messageBut];
+    //    [navTitleView addSubview:self.telephoneBut];
+    //    self.navigationItem.titleView = navTitleView;
+    self.navigationItem.titleView = self.segmentedCtrl;
     //导航栏左按钮
     UIButton *leftBut = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
     leftBut.layer.cornerRadius = 20;
@@ -82,20 +77,7 @@
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.mas_topLayoutGuide);
         make.left.right.equalTo(self.view);
-        make.bottom.equalTo(self.mas_bottomLayoutGuideTop).offset(-35);
-    }];
-    [self.view addSubview:self.messageTxt];
-    [self.messageTxt mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.view).offset(10);
-        make.right.equalTo(self.view).offset(-60);
-        make.bottom.equalTo(self.mas_bottomLayoutGuideTop).offset(-2);
-        make.height.mas_equalTo(30);
-    }];
-    [self.view addSubview:self.sendBut];
-    [self.sendBut mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.messageTxt.mas_right).offset(10);
-        make.right.equalTo(self.view).offset(-10);
-        make.centerY.equalTo(self.messageTxt);
+        make.bottom.equalTo(self.mas_bottomLayoutGuideTop);
     }];
 }
 //导航栏左边按钮方法
@@ -103,26 +85,25 @@
     DDMenuController *ddMenu = (DDMenuController *)[UIApplication sharedApplication].keyWindow.rootViewController;
     [ddMenu showLeftController:YES];
 }
-- (void)messageButAction{
-    _messageBut.backgroundColor = [UIColor whiteColor];
-     [_messageBut setTitleColor:[UIColor colorWithDecimalRed:0 green:175 blue:240 alpha:1] forState:UIControlStateNormal];
-    _telephoneBut.backgroundColor = [UIColor colorWithDecimalRed:0 green:175 blue:240 alpha:1];
-    [_telephoneBut setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-}
-- (void)telephoneButAction{
-    _telephoneBut.backgroundColor = [UIColor whiteColor];
-    [_telephoneBut setTitleColor:[UIColor colorWithDecimalRed:0 green:175 blue:240 alpha:1] forState:UIControlStateNormal];
-    _messageBut.backgroundColor = [UIColor colorWithDecimalRed:0 green:175 blue:240 alpha:1];
-    [_messageBut setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//- (void)messageButAction{
+//    _messageBut.backgroundColor = [UIColor whiteColor];
+//     [_messageBut setTitleColor:[UIColor colorWithDecimalRed:0 green:175 blue:240 alpha:1] forState:UIControlStateNormal];
+//    _telephoneBut.backgroundColor = [UIColor colorWithDecimalRed:0 green:175 blue:240 alpha:1];
+//    [_telephoneBut setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//}
+//- (void)telephoneButAction{
+//    _telephoneBut.backgroundColor = [UIColor whiteColor];
+//    [_telephoneBut setTitleColor:[UIColor colorWithDecimalRed:0 green:175 blue:240 alpha:1] forState:UIControlStateNormal];
+//    _messageBut.backgroundColor = [UIColor colorWithDecimalRed:0 green:175 blue:240 alpha:1];
+//    [_messageBut setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//}
+#pragma mark - Segment Action Target
+- (void) segmentedControlDidTouchDown:(UISegmentedControl *)sender{
+    
 }
 //导航栏右边按钮方法
 - (void)navigationRightBarButAction{
     
-}
-- (void)sendButAction:(UIButton *)sender{
-    ChatWithUserVC *vc = [[ChatWithUserVC alloc] init];
-    vc.userName = self.messageTxt.text;
-    [self presentViewController:vc animated:YES completion:nil];
 }
 #pragma mark - UITableViewDelegate && UITableViewDataSource
 
@@ -135,6 +116,7 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
     }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     EMConversation *con = [self.chatList objectAtIndex:indexPath.row];
     cell.textLabel.text = con.chatter;
     return cell;
@@ -143,7 +125,8 @@
     ChatWithUserVC *vc = [[ChatWithUserVC alloc] init];
     EMConversation *con = [self.chatList objectAtIndex:indexPath.row];
     vc.userName = con.chatter;
-    [self presentViewController:vc animated:YES completion:nil];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 //监听系统键盘
 #pragma mark Responding to keyboard events
@@ -163,7 +146,7 @@
 - (void)keyboardWillChangeFrame:(NSNotification *)notification {
     NSNumber *duration = [notification.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey];
     NSNumber *curve = [notification.userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey];
-//    CGRect keyRect1 = [[notification.userInfo objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue];
+    //    CGRect keyRect1 = [[notification.userInfo objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue];
     CGRect keyRect2 = [[notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
     
     CGRect rect = self.view.frame;
@@ -179,7 +162,7 @@
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
-
+    
     return YES;
 }
 
@@ -190,65 +173,73 @@
 #pragma mark subview load
 -(UITableView *)tableView{
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
         _tableView.backgroundColor = [UIColor colorWithDecimalRed:245 green:247 blue:250 alpha:1];
-//        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         //        _tableView.contentInset = UIEdgeInsetsMake(64, 0, 46, 0);
         _tableView.delegate = self;
         _tableView.dataSource = self;
+        //        if(@available(iOS 11.0, *)) {
+        //            _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        //        } else {
+        //            self.automaticallyAdjustsScrollViewInsets = NO;
+        //        }
     }
     return _tableView;
 }
 
--(UIButton *)messageBut{
-    if (!_messageBut) {
-        _messageBut = [[UIButton alloc] init];
-        _messageBut.backgroundColor = [UIColor whiteColor];
-        [_messageBut setTitle:@"消息" forState:UIControlStateNormal];
-        [_messageBut setTitleColor:[UIColor colorWithDecimalRed:0 green:175 blue:240 alpha:1] forState:UIControlStateNormal];
-        _messageBut.titleLabel.font = [UIFont boldSystemFontOfSize:15];
-        [_messageBut addTarget:self action:@selector(messageButAction) forControlEvents:UIControlEventTouchUpInside];
+//-(UIButton *)messageBut{
+//    if (!_messageBut) {
+//        _messageBut = [[UIButton alloc] init];
+//        _messageBut.backgroundColor = [UIColor whiteColor];
+//        [_messageBut setTitle:@"消息" forState:UIControlStateNormal];
+//        [_messageBut setTitleColor:[UIColor colorWithDecimalRed:0 green:175 blue:240 alpha:1] forState:UIControlStateNormal];
+//        _messageBut.titleLabel.font = [UIFont boldSystemFontOfSize:15];
+//        [_messageBut addTarget:self action:@selector(messageButAction) forControlEvents:UIControlEventTouchUpInside];
+//    }
+//    return _messageBut;
+//}
+//-(UIButton *)telephoneBut{
+//    if (!_telephoneBut) {
+//        _telephoneBut = [[UIButton alloc] init];
+//        _telephoneBut.backgroundColor = [UIColor colorWithDecimalRed:0 green:175 blue:240 alpha:1];
+//        [_telephoneBut setTitle:@"电话" forState:UIControlStateNormal];
+//        [_telephoneBut setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//        _telephoneBut.titleLabel.font = [UIFont boldSystemFontOfSize:15];
+//        [_telephoneBut addTarget:self action:@selector(telephoneButAction) forControlEvents:UIControlEventTouchUpInside];
+//    }
+//    return _telephoneBut;
+//}
+- (UISegmentedControl *)segmentedCtrl {
+    if (!_segmentedCtrl) {
+        NSArray *titles = nil;
+        titles = @[@"消息", @"电话"];
+        _segmentedCtrl = [[UISegmentedControl alloc] initWithItems:titles];
+        _segmentedCtrl.backgroundColor = [UIColor colorWithDecimalRed:0 green:175 blue:240 alpha:1];;
+        _segmentedCtrl.tintColor = [UIColor whiteColor];
+        NSDictionary *attr = nil;
+        if ([UIScreen mainScreen].bounds.size.width > 320) {
+            _segmentedCtrl.frame = CGRectMake( 0, 0, 70*titles.count, 27);
+            attr = @{NSFontAttributeName:[UIFont fontWithName:@"Arial" size:15]};
+        }else {
+            _segmentedCtrl.frame = CGRectMake( 0, 0, 60*titles.count, 27);
+            attr = @{NSFontAttributeName:[UIFont fontWithName:@"Arial-BoldMT" size:13]};
+        }
+        
+        [_segmentedCtrl setTitleTextAttributes:attr forState:UIControlStateNormal];
+        _segmentedCtrl.layer.cornerRadius = 8;
+        _segmentedCtrl.layer.masksToBounds = YES;
+        _segmentedCtrl.layer.borderWidth = 1.5;
+        _segmentedCtrl.layer.borderColor = [UIColor whiteColor].CGColor;
+        _segmentedCtrl.selectedSegmentIndex = 0;
+        
+        [_segmentedCtrl addTarget:self action:@selector(segmentedControlDidTouchDown:) forControlEvents:UIControlEventValueChanged];
     }
-    return _messageBut;
-}
--(UIButton *)telephoneBut{
-    if (!_telephoneBut) {
-        _telephoneBut = [[UIButton alloc] init];
-        _telephoneBut.backgroundColor = [UIColor colorWithDecimalRed:0 green:175 blue:240 alpha:1];
-        [_telephoneBut setTitle:@"电话" forState:UIControlStateNormal];
-        [_telephoneBut setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        _telephoneBut.titleLabel.font = [UIFont boldSystemFontOfSize:15];
-        [_telephoneBut addTarget:self action:@selector(telephoneButAction) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _telephoneBut;
-}
--(UITextField *)messageTxt{
-    if (!_messageTxt) {
-        _messageTxt = [[UITextField alloc] init];
-        _messageTxt.backgroundColor = [UIColor whiteColor];
-        _messageTxt.layer.masksToBounds = YES;
-        _messageTxt.layer.cornerRadius = 4;
-        _messageTxt.layer.borderWidth = 1;
-        _messageTxt.layer.borderColor = [[UIColor colorWithDecimalRed:240 green:247 blue:250 alpha:1] CGColor];
-        _messageTxt.layer.shadowColor = [[UIColor colorWithDecimalRed:240 green:247 blue:250 alpha:1] CGColor];
-        _messageTxt.delegate = self;
-    }
-    return _messageTxt;
-}
--(UIButton *)sendBut{
-    if (!_sendBut) {
-        _sendBut = [[UIButton alloc] init];
-        [_sendBut setTitle:@"选择" forState:UIControlStateNormal];
-        [_sendBut setTitleColor:[UIColor colorWithDecimalRed:0 green:175 blue:240 alpha:1] forState:UIControlStateNormal];
-        _sendBut.titleLabel.font = [UIFont systemFontOfSize:17];
-        [_sendBut addTarget:self action:@selector(sendButAction:) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _sendBut;
+    return _segmentedCtrl;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     
 }
-
 
 @end

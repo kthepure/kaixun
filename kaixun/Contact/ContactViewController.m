@@ -33,6 +33,11 @@
     self.navigationItem.title = @"联系人";
     [self customNavigationBar];
     [self newFriendUI];
+    /*
+     push一个界面，返回的时候，tabBar上的图标和文字出现一个从上往下的神奇动画(bug)
+    iOS 12.1 Beta 2 引入的问题，只要 UITabBar 是磨砂的，并且 pushviewController 时 hidesBottomBarWhenPushed = YES 则手势返回的时候就会触发，出现这个现象的直接原因是 tabBar 内的按钮 UITabBarButton 被设置了错误的 frame，frame.size 变为 (0, 0) 导致的
+     */
+//    [UITabBar appearance].translucent = NO;
     
     _arrSystem = @[@"申请与通知",@"群聊",@"聊天室"];
 //    _arrFriends = [[EaseMob sharedInstance].chatManager buddyList]; //获取好友列表

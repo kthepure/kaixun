@@ -58,6 +58,7 @@
 
 - (DDMenuController *)createTabBarMethod{
     UITabBarController *tabBarController = [[UITabBarController alloc] init];
+    tabBarController.tabBar.translucent = NO;
     MessageViewController *messageVC = [[MessageViewController alloc] init];
     UITabBarItem *messageItem = [[UITabBarItem alloc] initWithTitle:@"消息" image:[UIImage imageNamed:@"menu-message-hover"] tag:0];
     messageVC.tabBarItem = messageItem;
@@ -151,6 +152,7 @@
     [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:self.userNameText.text password:self.password.text completion:^(NSDictionary *loginInfo, EMError *error) {
         [hud hideAnimated:YES];
         if (!error) {
+            [self.view endEditing:YES];
             [UIApplication sharedApplication].keyWindow.rootViewController = [self createTabBarMethod];
             [[UIApplication sharedApplication].keyWindow makeKeyAndVisible];
         }else{

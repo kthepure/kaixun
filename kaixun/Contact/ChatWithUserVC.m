@@ -29,14 +29,14 @@
     //注册为SDK的chatManager的delegate
     [[EaseMob sharedInstance].chatManager addDelegate:self delegateQueue:nil];
     
-//    [[EaseMob sharedInstance].callManager removeDelegate:self];
-//    [[EaseMob sharedInstance].callManager addDelegate:self delegateQueue:nil];
+    //    [[EaseMob sharedInstance].callManager removeDelegate:self];
+    //    [[EaseMob sharedInstance].callManager addDelegate:self delegateQueue:nil];
     
     //开始新建会话，获取会话列表
     conversation = [[EaseMob sharedInstance].chatManager conversationForChatter:self.userName conversationType:eConversationTypeChat];
-    self.textview = [[UITextView alloc] initWithFrame:CGRectMake(0, 98, [UIScreen mainScreen].bounds.size.width, 400)];
-    self.textview.backgroundColor = [UIColor colorWithDecimalRed:230 green:237 blue:245 alpha:1];
-    [self.view addSubview:self.textview];
+    //    self.textview = [[UITextView alloc] initWithFrame:CGRectMake(0, 98, [UIScreen mainScreen].bounds.size.width, 400)];
+    //    self.textview.backgroundColor = [UIColor colorWithDecimalRed:230 green:237 blue:245 alpha:1];
+    //    [self.view addSubview:self.textview];
     
     [self customNavigationBar];
     [self configureLayoutConstraints];
@@ -44,27 +44,31 @@
 }
 
 - (void)customNavigationBar{
-    UIButton *b = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 30)];
-    [b setTitle:@"back" forState:UIControlStateNormal];
-    [b setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    b.backgroundColor = [UIColor clearColor];
-    [b addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchDown];
-    UIBarButtonItem * left = [[UIBarButtonItem alloc] initWithCustomView:b];
+    //    UIButton *b = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 30)];
+    //    [b setTitle:@"back" forState:UIControlStateNormal];
+    //    [b setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    //    b.backgroundColor = [UIColor clearColor];
+    //    [b addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchDown];
+    //    UIBarButtonItem * leftItem = [[UIBarButtonItem alloc] initWithCustomView:b];
     //    self.navigationController.navigationItem.leftBarButtonItem = left;
     
     UIButton *b1 = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 80, 30)];
-    [b1 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [b1 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [b1 setTitle:@"删除会话" forState:UIControlStateNormal];
     b1.backgroundColor = [UIColor clearColor];
     [b1 addTarget:self action:@selector(deleteChatManager) forControlEvents:UIControlEventTouchDown];
-    UIBarButtonItem * right = [[UIBarButtonItem alloc] initWithCustomView:b1];
+    UIBarButtonItem * rightItem = [[UIBarButtonItem alloc] initWithCustomView:b1];
     
-    UINavigationBar * bar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 64)];
-    UINavigationItem * title = [[UINavigationItem alloc] initWithTitle:self.userName];
-    [bar pushNavigationItem:title animated:NO];
-    title.leftBarButtonItem = left;
-    title.rightBarButtonItem = right;
-    [self.view addSubview:bar];
+    //    UINavigationBar * bar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 64)];
+    //    UINavigationItem * title = [[UINavigationItem alloc] initWithTitle:self.userName];
+    //    [bar pushNavigationItem:title animated:NO];
+    //    title.leftBarButtonItem = left;
+    //    title.rightBarButtonItem = right;
+    //    [self.view addSubview:bar];
+    
+    //    self.navigationItem.leftBarButtonItem = leftItem;
+    self.navigationItem.rightBarButtonItem = rightItem;
+    self.navigationItem.title = self.userName;
 }
 
 - (void)configureLayoutConstraints{
@@ -72,8 +76,8 @@
     [self.messageTxt mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view).offset(10);
         make.right.equalTo(self.view).offset(-60);
-        make.top.equalTo(self.view).offset(66);
-        make.height.mas_equalTo(30);
+        make.bottom.equalTo(self.mas_bottomLayoutGuide).offset(-5);
+        make.height.mas_equalTo(40);
     }];
     [self.view addSubview:self.sendBut];
     [self.sendBut mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -81,14 +85,18 @@
         make.right.equalTo(self.view).offset(-10);
         make.centerY.equalTo(self.messageTxt);
     }];
-}
--(void)back:(UIButton *)sender{
-    [self dismissViewControllerAnimated:YES completion:^{
-        
+    [self.view addSubview:self.textview];
+    [self.textview mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.mas_topLayoutGuideBottom).offset(15);
+        make.left.right.equalTo(self.view);
+        make.bottom.equalTo(self.messageTxt.mas_top).offset(-15);
     }];
 }
+-(void)back:(UIButton *)sender{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 - (void)sendButAction:(UIButton *)sender{
-//    EMChatText *txtChat = [[EMChatText alloc] initWithText:[NSString stringWithFormat:@"%@\n\t\t\t\t\t%@说:%@",self.textview.text,self.userName,self.messageTxt.text]];
+    //    EMChatText *txtChat = [[EMChatText alloc] initWithText:[NSString stringWithFormat:@"%@\n\t\t\t\t\t%@说:%@",self.textview.text,self.userName,self.messageTxt.text]];
     EMChatText *txtChat = [[EMChatText alloc] initWithText:self.messageTxt.text];
     EMTextMessageBody *body = [[EMTextMessageBody alloc] initWithChatObject:txtChat];
     //生成message
@@ -143,6 +151,14 @@
     [self.view endEditing:YES];
 }
 #pragma mark subview load
+- (UITextView *)textview{
+    if (!_textview) {
+        _textview = [[UITextView alloc] init];
+        _textview.font = [UIFont systemFontOfSize:17];
+        //        _textview.backgroundColor = [UIColor colorWithDecimalRed:230 green:237 blue:245 alpha:1];
+    }
+    return _textview;
+}
 -(UITextField *)messageTxt{
     if (!_messageTxt) {
         _messageTxt = [[UITextField alloc] init];
